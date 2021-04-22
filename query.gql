@@ -1,0 +1,49 @@
+query GetPublicDataForRepo($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    id
+    name
+    description
+    createdAt
+    stargazerCount
+    primaryLanguage {
+      name
+    }
+    isPrivate
+    isArchived
+    issues(states: OPEN) {
+      totalCount
+    }
+    pullRequests(states: OPEN) {
+      totalCount
+    }
+    owner {
+      login
+    }
+    nameWithOwner
+    url
+    isFork
+    licenseInfo {
+      name
+      nickname
+    }
+    repositoryTopics(first: 100) {
+      nodes {
+        topic {
+          id
+          name
+        }
+      }
+    }
+    codeOfConduct {
+      name
+    }
+    owner {
+      repositories(first: 50, orderBy: { field: STARGAZERS, direction: DESC }) {
+        nodes {
+          nameWithOwner
+          stargazerCount
+        }
+      }
+    }
+  }
+}
