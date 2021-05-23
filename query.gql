@@ -37,6 +37,17 @@ query GetPublicDataForRepo($owner: String!, $name: String!) {
     codeOfConduct {
       name
     }
+    defaultBranchRef {
+      name
+    }
+    watchers {
+      totalCount
+    }
+    diskUsage
+    releases {
+      totalCount
+    }
+    homepageUrl
     owner {
       repositories(first: 50, orderBy: { field: STARGAZERS, direction: DESC }) {
         nodes {
